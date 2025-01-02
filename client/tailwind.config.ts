@@ -6,9 +6,16 @@ const config: Config = {
     ],
     theme: {
         extend: {
-            // fontFamily: {
-            //     roboto: ['Roboto', 'sans-serif'], // 예시: 커스텀 폰트 추가
-            // },
+            fontFamily: {
+                roboto: ['Roboto', 'sans-serif'],
+            },
+            colors: {
+                softBlack: "#1A1A1A",
+                charcoalGray: "#333333",
+                darkSlateGray: "#2F4F4F",
+                graphite: "#3C3C3C",
+                warmGray: "#4B4B4B",
+            },
         },
     },
     plugins: [],
