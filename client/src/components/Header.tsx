@@ -1,6 +1,5 @@
 import clsx from "clsx"
-import React from "react"
-import Logo from "../../public/logo.png"
+import Logo from "/logo.png"
 
 const titleClasses = clsx(
   "text-2xl font-bold text-charcoalGray hidden md:block"

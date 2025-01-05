@@ -1,3 +1,6 @@
+import { useState } from "react"
+import AddForm from "./components/AddForm"
+import Button from "./components/Button"
 import Header from "./components/Header"
 import Quadrant from "./components/Quadrant"
 import { Quadrant as QuadrantType } from "./types"
@@ -6,38 +9,44 @@ const QUADRANTS: QuadrantType[] = [
   {
     id: 1,
     title: "Do Now",
-    bg_color: "bg-red-100",
-    text_color: "text-red-900",
+    primary_color: "red-900",
+    neutral_color: "red-100",
   },
   {
     id: 2,
     title: "Schedule",
-    bg_color: "bg-blue-100",
-    text_color: "text-blue-900",
+    primary_color: "blue-900",
+    neutral_color: "blue-100",
   },
   {
     id: 3,
     title: "Delegate",
-    bg_color: "bg-yellow-100",
-    text_color: "text-yellow-900",
+    primary_color: "yellow-900",
+    neutral_color: "yellow-100",
   },
   {
     id: 4,
     title: "Delete",
-    bg_color: "bg-gray-100",
-    text_color: "text-gray-900",
+    primary_color: "gray-900",
+    neutral_color: "gray-100",
   },
 ]
 
 function App() {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
   return (
     <>
       <Header />
-      <div className="bg-white m-4 grid grid-cols-2 gap-2 md:gap-4">
+      <div className="m-4 flex justify-end">
+        <Button title="+ Add Todo" handleClick={() => setIsFormOpen(true)} />
+      </div>
+      <div className="m-4 grid grid-cols-2 gap-2 md:gap-4">
         {QUADRANTS.map((quad) => (
           <Quadrant key={quad.id} item={quad} />
         ))}
       </div>
+      {isFormOpen && <AddForm />}
     </>
   )
 }

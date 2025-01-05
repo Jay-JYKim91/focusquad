@@ -1,6 +1,20 @@
 export type Quadrant = {
     id: number;
     title: string;
-    bg_color: string;
-    text_color: string;
+    primary_color: string;
+    neutral_color: string;
 };
+
+export type Todo = {
+    id: number;
+    quadrant_id: number;
+    title: string;
+    isDone: boolean;
+}
+
+export type TodoInput = {
+    title: string;
+    priority: number;
+    urgency: number;
+    due_date: string;
+}
