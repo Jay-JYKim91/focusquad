@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useEffect, useState } from 'react';
 import { Todo as TodoType, TodoInput as TodoInputType} from '../types';
 
@@ -27,8 +26,15 @@ export const useTodos = () => {
         setTodos([...todos, newTodo])
     }
 
+    const editTodo = (todo: TodoType) => {
+        const newTodos = todos.map((item) => (item.id === todo.id) ? todo : item)
+    
+        setTodos(newTodos)
+    }
+
     return {
         todos,
-        addTodo
+        addTodo,
+        editTodo
     }
 }

@@ -16,13 +16,14 @@ export default function Radio({
   onChange,
 }: RadioProps) {
   return (
-    <label>
+    <label className="basis-1/2">
       <input
         type="radio"
         value={value}
         name={name}
         defaultChecked={defaultChecked}
         onClick={onChange}
+        className="mr-2"
       />
       {children}
     </label>

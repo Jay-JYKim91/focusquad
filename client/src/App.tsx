@@ -34,6 +34,7 @@ const QUADRANTS: QuadrantType[] = [
 
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const clickFormClose = () => setIsFormOpen(false)
 
   return (
     <>
@@ -46,7 +47,7 @@ function App() {
           <Quadrant key={quad.id} item={quad} />
         ))}
       </div>
-      {isFormOpen && <AddForm />}
+      {isFormOpen && <AddForm handleFormClose={clickFormClose} />}
     </>
   )
 }
