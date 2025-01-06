@@ -34,6 +34,7 @@ export default function AddForm({ handleFormClose }: AddFormProp) {
   const handleAddTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     addTodo(formValue)
+    handleFormClose()
   }
 
   return (
@@ -100,6 +101,7 @@ export default function AddForm({ handleFormClose }: AddFormProp) {
               type="date"
               className={textInputClasses}
               value={formValue.due_date}
+              min={new Date().toISOString().split("T")[0]}
               onChange={(e) =>
                 setFormValue({ ...formValue, due_date: e.target.value })
               }

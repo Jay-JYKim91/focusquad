@@ -3,6 +3,7 @@ import AddForm from "./components/AddForm"
 import Button from "./components/Button"
 import Header from "./components/Header"
 import Quadrant from "./components/Quadrant"
+import { TodoProvider } from "./context/TodoContext"
 import { Quadrant as QuadrantType } from "./types"
 
 const QUADRANTS: QuadrantType[] = [
@@ -37,7 +38,7 @@ function App() {
   const clickFormClose = () => setIsFormOpen(false)
 
   return (
-    <>
+    <TodoProvider>
       <Header />
       <div className="m-4 flex justify-end">
         <Button title="+ Add Todo" handleClick={() => setIsFormOpen(true)} />
@@ -48,7 +49,7 @@ function App() {
         ))}
       </div>
       {isFormOpen && <AddForm handleFormClose={clickFormClose} />}
-    </>
+    </TodoProvider>
   )
 }
 

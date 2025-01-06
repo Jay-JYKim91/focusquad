@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useTodos } from "../hooks/useTodos"
 import { Todo as TodoType } from "../types"
 
@@ -7,7 +6,6 @@ type TodoProps = {
 }
 
 export default function Todo({ todo }: TodoProps) {
-  //   const [isChecked, setIsChecked] = useState(todo.isDone)
   const { editTodo } = useTodos()
 
   const handleCheck = () => {
