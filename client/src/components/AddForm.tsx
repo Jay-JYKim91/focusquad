@@ -8,6 +8,7 @@ type FormValueType = {
   priority: number
   urgency: number
   due_date: string
+  note: string
 }
 
 type AddFormProp = {
@@ -16,7 +17,7 @@ type AddFormProp = {
 
 export default function AddForm({ handleFormClose }: AddFormProp) {
   const buttonClasses = clsx("border border-black px-2 py-1 ml-2 rounded")
-  const spanClasses = clsx("basis-1/2 md:basis-1/3 text-lg content-center")
+  const spanClasses = clsx("basis-1/2 md:basis-1/3 text-lg ")
   const rowClasses = clsx("flex flex-row mb-2")
   const textInputClasses = clsx(
     "w-full border border-gray-400 rounded-lg px-2 py-1 focus:outline-none focus:ring-0"
@@ -28,6 +29,7 @@ export default function AddForm({ handleFormClose }: AddFormProp) {
     priority: 1,
     urgency: 1,
     due_date: "",
+    note: "",
   })
   const { addTodo } = useTodos()
 
@@ -107,15 +109,16 @@ export default function AddForm({ handleFormClose }: AddFormProp) {
               }
             />
           </div>
-          {/* <div className="flex flex-row">
+          <div className="flex flex-row">
             <span className={spanClasses}>Note: </span>
-            <input
-              type="text"
-              className="w-full mb-2"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
+            <textarea
+              className={textInputClasses}
+              value={formValue.note}
+              onChange={(e) =>
+                setFormValue({ ...formValue, note: e.target.value })
+              }
             />
-          </div> */}
+          </div>
           <div className="flex justify-end mt-4">
             <button
               className={buttonClasses}

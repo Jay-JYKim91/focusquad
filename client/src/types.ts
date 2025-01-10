@@ -10,6 +10,8 @@ export type Todo = {
     quadrant_id: number;
     title: string;
     isDone: boolean;
+    due_date: string;
+    note: string;
 }
 
 export type TodoInput = {
@@ -17,4 +19,5 @@ export type TodoInput = {
     priority: number;
     urgency: number;
     due_date: string;
+    note: string;
 }

@@ -33,6 +33,8 @@ export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({
       quadrant_id: getQuadrantId(todo.priority, todo.urgency),
       title: todo.title,
       isDone: false,
+      due_date: todo.due_date,
+      note: todo.note,
     }
 
     setTodos((prev) => [...prev, newTodo])

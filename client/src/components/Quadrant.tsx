@@ -16,7 +16,9 @@ export default function Quadrant({ item }: QuadrantProps) {
       <div className={`text-${item.primary_color} font-bold mb-2`}>
         <span className="text-lg">{item.title}</span>
       </div>
-      <div>
+      <div
+      // className="grid grid-cols-1 md:grid-cols-2 gap-2"
+      >
         {todos
           .filter((todo) => todo.quadrant_id === item.id)
           .map((todo) => (
