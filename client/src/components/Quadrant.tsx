@@ -5,11 +5,15 @@ import Todo from "./Todo"
 
 type QuadrantProps = {
   item: QuadrantType
+  isHideCompleted: boolean
 }
 
-export default function Quadrant({ item }: QuadrantProps) {
+export default function Quadrant({ item, isHideCompleted }: QuadrantProps) {
   const divClasses = clsx("rounded-lg p-2 md:p-4", "bg-" + item.neutral_color)
   const { todos } = useTodos()
+  const filteredTodo = todos
+    .filter((todo) => todo.quadrant_id === item.id)
+    .filter((todo) => !isHideCompleted || !todo.isDone)
 
   return (
     <div className={divClasses}>
@@ -19,11 +23,9 @@ export default function Quadrant({ item }: QuadrantProps) {
       <div
       // className="grid grid-cols-1 md:grid-cols-2 gap-2"
       >
-        {todos
-          .filter((todo) => todo.quadrant_id === item.id)
-          .map((todo) => (
-            <Todo key={todo.id} todo={todo} />
-          ))}
+        {filteredTodo.map((todo) => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
       </div>
     </div>
   )

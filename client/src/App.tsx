@@ -35,17 +35,26 @@ const QUADRANTS: QuadrantType[] = [
 
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const [isHideCompleted, setIsHideCompleted] = useState(false)
   const clickFormClose = () => setIsFormOpen(false)
 
   return (
     <TodoProvider>
       <Header />
       <div className="m-4 flex justify-end">
+        <Button
+          title={`${isHideCompleted ? "Show" : "Hide"} Completed`}
+          handleClick={() => setIsHideCompleted(!isHideCompleted)}
+        />
         <Button title="+ Add Todo" handleClick={() => setIsFormOpen(true)} />
       </div>
       <div className="m-4 grid grid-cols-2 gap-2 md:gap-4">
         {QUADRANTS.map((quad) => (
-          <Quadrant key={quad.id} item={quad} />
+          <Quadrant
+            key={quad.id}
+            item={quad}
+            isHideCompleted={isHideCompleted}
+          />
         ))}
       </div>
       {isFormOpen && <AddForm handleFormClose={clickFormClose} />}
